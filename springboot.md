@@ -68,7 +68,7 @@
 
   ```java
   @GetMapping("/req/attr")
-  public String reqAttr(@RequestAttribute("id"String id)){
+  public String reqAttr(@RequestAttribute("id")String id){
        return id;
   }
   ```
