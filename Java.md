@@ -1067,11 +1067,25 @@ latch.await();//await()会阻塞当前线程，直到N变成零
 ##### 	二、事务传播行为
 
 1. **REQUIRED：**<u>默认值。如果当前存在事务，则加入事务，如果不存在则新建事务</u>。
+
+   ​		**事务回滚点：Tx1和Tx2  保持一致**
+
+   ![img](https://img-blog.csdn.net/20180604214154315?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzMwNjA0OTg5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)	
+
 2. **REQUIRED_NEW：**<u>如果当前存在事务，把当前事务挂起，另起一个新的事务。无则新建事务</u>
+
+   ​		**事务回滚点：Tx1挂起，Tx2（Tx3/4）执行，事务回滚互不影响**
+
+   ![img](https://img-blog.csdn.net/20180604214239677?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzMwNjA0OTg5/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)	
+
 3. **SUPPORTS：**<u>如果当前存在事务，则加入事务；若不存在则以非事务方式执行。</u>
+
 4. **NOT_SUPPORTED:**<u>以非事务方式运行，若当前存在事务，将当前事务挂起。</u>
+
 5. **NEVER：**<u>以非事务方式运行，若当前存在事务则抛异常</u>
+
 6. **MANDATORY：**<u>必须有事务。如果当前存在事务，则加入事务。没有事务则抛异常</u>
+
 7. **NESTED：**<u>如果当前存在事务，创建一个新的事务作为当前事务的嵌套事务运行。**没有事务则以REQUIRED方式运行**</u>
 
 
