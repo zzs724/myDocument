@@ -334,7 +334,7 @@ Executors框架包括：线程池、Executor，Executors，ExecutorService、Com
 
 ​	Callable接口使用泛型去定义它的返回类型。Executors类提供了一些有用的方法在线程池中执行Callable内的任务。由于Callable任务是并行的（并行就是整体看上去是并行的，其实在某个时间点只有一个线程在执行），我们必须等待它返回的结果
 
-##### 2、实现Callsble
+##### 2、实现Callable
 
 ```java
     class MyCallable implements Callable<String> {
@@ -425,7 +425,11 @@ public class CallableTest{
                                                               new ThreadPoolExecutor.AbortPolicy());
 ```
 
+​	三个常用线程池：
 
+1. **newSingleThreadExecutor**：LinkedBlockingQueue，保证所有任务的执行顺序按照任务的提交顺序执行
+2. **newFixedThreadPool**：队列是：LinkedBlockingQueue，创建固定大小的线程池
+3. **newCachedThreadPool**：队列是：SynchronousQueue
 
 ### 十三、synchronized和ReentrantLock的区别
 
