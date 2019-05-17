@@ -84,8 +84,12 @@
   ```
 
   ```java
-  @Value(value="${my.name}")
-  private String name;
+  @Configuration
+  public class Person(){
+      @Value(value="${my.name}")
+  	private String name;
+  }
+  
   ```
 
 - **@PropertySource：读取配置文件**
